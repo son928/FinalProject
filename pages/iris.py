@@ -1,4 +1,4 @@
-https://github.com/dataprofessor/streamlit_freecodecamp/blob/main/app_7_classification_iris/iris-ml-app.py
+# https://github.com/dataprofessor/streamlit_freecodecamp/blob/main/app_7_classification_iris/iris-ml-app.py
     
 import streamlit as st
 import pandas as pd
@@ -12,6 +12,7 @@ This app predicts the **Iris flower** type!
 
 st.sidebar.header('User Input Parameters')
 
+#user_input을 데이터 프레임 형태로
 def user_input_features():
     sepal_length = st.sidebar.slider('Sepal length', 4.3, 7.9, 5.4)
     sepal_width = st.sidebar.slider('Sepal width', 2.0, 4.4, 3.4)
@@ -36,7 +37,9 @@ Y = iris.target
 clf = RandomForestClassifier()
 clf.fit(X, Y)
 
+#품종이 무엇인지
 prediction = clf.predict(df)
+#각각의 확률이 얼마인지 알 수 있음
 prediction_proba = clf.predict_proba(df)
 
 st.subheader('Class labels and their corresponding index number')
