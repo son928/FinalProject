@@ -26,17 +26,17 @@ if Name in Code_name_list:
     # st.pyplot(fig)
     fig = px.line(df, y='종가', title='{}의 종가(close) Time Series'.format(Name))
 
-    fig.update_xaxes(
-        rangeslider_visible=True,
-        rangeselector=dict(
-            buttons=list([
-                dict(count=1, label="1m", step="month", stepmode="backward"),
-                dict(count=3, label="3m", step="month", stepmode="backward"),
-                dict(count=6, label="6m", step="month", stepmode="backward"),
-                dict(step="all")
-            ])
-        )
-    )
+#     fig.update_xaxes(
+#         rangeslider_visible=True,
+#         rangeselector=dict(
+#             buttons=list([
+#                 dict(count=1, label="1m", step="month", stepmode="backward"),
+#                 dict(count=3, label="3m", step="month", stepmode="backward"),
+#                 dict(count=6, label="6m", step="month", stepmode="backward"),
+#                 dict(step="all")
+#             ])
+#         )
+#     )
     st.pyplot(fig.show())
 elif Name not in Code_name_list:
     st.text('검색하신 주식 종목이 없습니다. 정확하게 입력해주세요.')
