@@ -3,6 +3,8 @@ import streamlit as st
 import FinanceDataReader as fdr
 import matplotlib.pyplot as plt
 import koreanize_matplotlib
+import plotly.graph_objects as go
+import plotly.express as px
 
 st.title('국내 주식 현황입니다.')
 Stockcode = pd.read_csv('data/Stockcode.csv')
