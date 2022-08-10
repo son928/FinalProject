@@ -3,6 +3,8 @@ import streamlit as st
 import FinanceDataReader as fdr
 import matplotlib.pyplot as plt
 import koreanize_matplotlib
+import plotly.graph_objects as go
+import plotly.express as px
 
 Stockcode = pd.read_csv('data/Stockcode.csv')
 Stockcode.set_index('Name', inplace=True)
