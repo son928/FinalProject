@@ -36,6 +36,6 @@ if Name in Code_name_list:
             ])
         )
     )
-    st.pyplot(fig)
+    st.pyplot(fig.show())
 elif Name not in Code_name_list:
     st.text('검색하신 주식 종목이 없습니다. 정확하게 입력해주세요.')
