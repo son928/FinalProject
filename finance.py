@@ -13,6 +13,10 @@ if Name in Code_name_list:
     code_num = Stockcode.at[Name, 'Symbol']
     df = fdr.DataReader(code_num)
     df = df.rename(columns={'Open':'시가', 'High':'고가','Low':'저가', 'Close':'종가', 'Volume':'거래량', 'Change':'전일대비'})
+    col1, col2, col3 = st.columns(3)
+    col1.metric("현재 주식가격",format(df['종가'].tail(1)[0], ',')+'원', "%d원" %(df['종가'].diff().tail(1)[0]))
+    col2.metric("현재 거래량", format(df['거래량'].tail(1)[0], ','),"%.2f%%" %(df['거래량'].pct_change().tail(1)[0] * 100))
+    col3.metric("전일 대비 가격", round(df['전일대비'].tail(1)[0], 4), "%.2f%%" %(df['전일대비'].tail(1)[0] * 100))
     fig = px.line(df, y='종가', title='{}의 종가(close) Time Series'.format(Name))
     fig.update_xaxes(
         rangeslider_visible=True,
