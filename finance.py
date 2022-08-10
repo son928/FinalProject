@@ -3,7 +3,9 @@ import streamlit as st
 import FinanceDataReader as fdr
 import matplotlib.pyplot as plt
 import koreanize_matplotlib
+import plotly.express as px
 
+st.title('국내 주식 현황입니다.')
 Stockcode = pd.read_csv('data/Stockcode.csv')
 Stockcode.set_index('Name', inplace=True)
 Name = st.text_input('Code Name')
@@ -17,7 +19,12 @@ if Name in Code_name_list:
     col1.metric("현재 주식가격",format(df['종가'].tail(1)[0], ',')+'원', "%d원" %(df['종가'].diff().tail(1)[0]))
     col2.metric("현재 거래량", format(df['거래량'].tail(1)[0], ','),"%.2f%%" %(df['거래량'].pct_change().tail(1)[0] * 100))
     col3.metric("전일 대비 가격", round(df['전일대비'].tail(1)[0], 4), "%.2f%%" %(df['전일대비'].tail(1)[0] * 100))
-    fig = px.line(df, y='Close', title='{}의 종가(close) Time Series'.format(Name))
+    fig = plt.figure(facecolor='white', figsize=(20, 10))
+    # plt.plot(df['종가'])
+    # plt.title(Name)
+    # st.pyplot(fig)
+    fig = px.line(df, y='종가', title='{}의 종가(close) Time Series'.format(Name))
+
     fig.update_xaxes(
         rangeslider_visible=True,
         rangeselector=dict(
@@ -29,6 +36,6 @@ if Name in Code_name_list:
             ])
         )
     )
-    fig.show()
+    st.pyplot(fig.show())
 elif Name not in Code_name_list:
     st.text('검색하신 주식 종목이 없습니다. 정확하게 입력해주세요.')
