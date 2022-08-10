@@ -20,13 +20,13 @@ if Name in Code_name_list:
     col1.metric("현재 주식가격",format(df['종가'].tail(1)[0], ',')+'원', "%d원" %(df['종가'].diff().tail(1)[0]))
     col2.metric("현재 거래량", format(df['거래량'].tail(1)[0], ','),"%.2f%%" %(df['거래량'].pct_change().tail(1)[0] * 100))
     col3.metric("전일 대비 가격", round(df['전일대비'].tail(1)[0], 4), "%.2f%%" %(df['전일대비'].tail(1)[0] * 100))
-   fig = plt.figure(facecolor='white', figsize=(20, 10))
+    fig = plt.figure(facecolor='white', figsize=(20, 10))
     # plt.plot(df['종가'])
     # plt.title(Name)
     # st.pyplot(fig)
-   fig = px.line(df, y='Close', title='{}의 종가(close) Time Series'.format(Name))
+    fig = px.line(df, y='Close', title='{}의 종가(close) Time Series'.format(Name))
 
-   fig.update_xaxes(
+    fig.update_xaxes(
         rangeslider_visible=True,
         rangeselector=dict(
             buttons=list([
