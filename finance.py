@@ -22,7 +22,7 @@ if Name in Code_name_list:
     fig = plt.figure(facecolor='white', figsize=(20, 10))
     # plt.plot(df['종가'])
     # plt.title(Name)
-    # st.pyplot(fig)
+    st.pyplot(fig)
     fig = px.line(df, y='종가', title='{}의 종가(close) Time Series'.format(Name))
 
     fig.update_xaxes(
