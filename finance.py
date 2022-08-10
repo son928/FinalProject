@@ -24,7 +24,7 @@ if Name in Code_name_list:
     # plt.plot(df['종가'])
     # plt.title(Name)
     # st.pyplot(fig)
-    fig = px.line(df, y='종가', title='{}의 종가(close) Time Series'.format(Name))
+#    fig = px.line(df, y='종가', title='{}의 종가(close) Time Series'.format(Name))
 
 #     fig.update_xaxes(
 #         rangeslider_visible=True,
