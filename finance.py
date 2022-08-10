@@ -4,7 +4,7 @@ import FinanceDataReader as fdr
 import matplotlib.pyplot as plt
 import koreanize_matplotlib
 
-Stockcode = pd.read_csv('/Users/son-yuseon/Desktop/likelion/data/Stockcode.csv')
+Stockcode = pd.read_csv('data/Stockcode.csv')
 Stockcode.set_index('Name', inplace=True)
 Name = st.text_input('Code Name')
 Code_name_list = Stockcode.index.tolist()
