@@ -19,7 +19,7 @@ if Name in Code_name_list:
     col2.metric("현재 거래량", format(df['거래량'].tail(1)[0], ','),"%.2f%%" %(df['거래량'].pct_change().tail(1)[0] * 100))
     col3.metric("전일 대비 가격", round(df['전일대비'].tail(1)[0], 4), "%.2f%%" %(df['전일대비'].tail(1)[0] * 100))
     
-    fig = px.line(df, y='종가', title='{}의 종가(close) Time Series'.format(Name))
+    fig = px.line(df, y='종가', title='{} 종가 Time Series'.format(Name))
 
     fig.update_xaxes(
         rangeslider_visible=True,
@@ -32,19 +32,19 @@ if Name in Code_name_list:
             ])
         )
     )
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
     fig2 = go.Figure(data=[go.Candlestick(x=df.index,
                 open=df['시가'],
                 high=df['고가'],
                 low=df['저가'],
                 close=df['종가'],
-                increasing_line_color = 'red',
-                decreasing_line_color = 'blue',
+                increasing_line_color = 'tomato',
+                decreasing_line_color = 'royalblue',
                 showlegend = False)])
 
     fig2.update_layout(title='{} Candlestick chart'.format(Name))
-    st.plotly_chart(fig2)
+    st.plotly_chart(fig2, use_container_width=True)
 
 elif Name not in Code_name_list:
     st.text('검색하신 주식 종목이 없습니다. 정확하게 입력해주세요.')
